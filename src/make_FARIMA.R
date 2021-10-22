@@ -1,4 +1,5 @@
 # Run this script to generate the FARIMA time series
+# to test the different methods to compute d
 
 library(fracdiff)
 library(EnvStats)
@@ -7,6 +8,7 @@ library(CircStats)
 set.seed(0)
 
 N <- 10000
+n <- 100
 
 # 1) Gaussian FARIMA(1,d,0)
 
@@ -77,3 +79,71 @@ for (i in 1:length(d)){
 # 7) Symmetric stable FARIMA(0,d,0)
 # a) alpha <- 1.5
 
+alpha <- 1.5
+d <- c(0.0, 0.1, 0.2, 0.3)
+
+for (i in 1:length(d)){
+  ts <- fracdiff.sim(N, d=d[i], rand.gen=rstable, index=alpha)
+  filename <- paste("../data/FARIMA/series_7a_", i, ".txt", sep="")
+  write.table(ts$series, filename, sep="\t", row.names=FALSE, col.names=FALSE) 
+}
+
+# a) alpha <- 1.2
+
+alpha <- 1.2
+d <- c(0.0, 0.1)
+
+for (i in 1:length(d)){
+  ts <- fracdiff.sim(N, d=d[i], rand.gen=rstable, index=alpha)
+  filename <- paste("../data/FARIMA/series_7b_", i, ".txt", sep="")
+  write.table(ts$series, filename, sep="\t", row.names=FALSE, col.names=FALSE) 
+}
+
+# 8) Symmetric stable FARIMA(1,d,1)
+# a) alpha <- 1.5
+
+alpha <- 1.5
+phi <- 0.3
+theta <- 0.7
+d <- c(0.0, 0.1, 0.2, 0.3)
+
+for (i in 1:length(d)){
+  ts <- fracdiff.sim(N, ar=c(phi), ma=c(theta), d=d[i], rand.gen=rstable, index=alpha)
+  filename <- paste("../data/FARIMA/series_8a_", i, ".txt", sep="")
+  write.table(ts$series, filename, sep="\t", row.names=FALSE, col.names=FALSE) 
+}
+
+# a) alpha <- 1.2
+
+alpha <- 1.2
+phi <- 0.3
+theta <- 0.7
+d <- c(0.0, 0.1)
+
+for (i in 1:length(d)){
+  ts <- fracdiff.sim(N, ar=c(phi), ma=c(theta), d=d[i], rand.gen=rstable, index=alpha)
+  filename <- paste("../data/FARIMA/series_8b_", i, ".txt", sep="")
+  write.table(ts$series, filename, sep="\t", row.names=FALSE, col.names=FALSE) 
+}
+
+# 9) FARIMA(0,d,0) with Pareto innovations
+
+alpha <- 1.5
+d <- c(0.0, 0.1, 0.2, 0.3)
+
+for (i in 1:length(d)){
+  ts <- fracdiff.sim(N, d=d[i], rand.gen=rpareto, location=1, shape=alpha, n.start=n)
+  filename <- paste("../data/FARIMA/series_9_", i, ".txt", sep="")
+  write.table(ts$series, filename, sep="\t", row.names=FALSE, col.names=FALSE) 
+}
+
+# 10) FARIMA(0,d,0) with skewed stable innovations
+
+alpha <- 1.5
+d <- c(0.0, 0.1, 0.2, 0.3)
+
+for (i in 1:length(d)){
+  ts <- fracdiff.sim(N, d=d[i], rand.gen=rstable, index=alpha, skewness=1)
+  filename <- paste("../data/FARIMA/series_10_", i, ".txt", sep="")
+  write.table(ts$series, filename, sep="\t", row.names=FALSE, col.names=FALSE) 
+}
