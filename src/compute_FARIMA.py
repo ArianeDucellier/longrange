@@ -40,6 +40,12 @@ for i in range(0, len(files)):
 m = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33, 42, 54, 70, 90, 115, 148, \
     190, 244, 314], dtype=int)
 
+# Number of blocks for R/S method
+K = 5
+
+# Time step for the periodogram method
+dt = 1.0
+
 # Absolute value method
 newpath = 'absolutevalue' 
 if not os.path.exists(newpath):
@@ -96,7 +102,7 @@ if not os.path.exists(newpath):
 d_RS = np.zeros(len(files))
 
 for i in range(0, len(files)):
-    d_RS[i] = RSstatistic(dirname, files[i], m)
+    d_RS[i] = RSstatistic(dirname, files[i], m, K)
 
 df['d_RS'] = d_RS
 
@@ -104,8 +110,6 @@ df['d_RS'] = d_RS
 newpath = 'periodogram'
 if not os.path.exists(newpath):
     os.makedirs(newpath)
-
-dt = 1.0
 
 d_p = np.zeros(len(files))
 

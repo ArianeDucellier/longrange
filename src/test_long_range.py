@@ -244,7 +244,7 @@ def varianceresiduals(dirname, filename, m, method):
     else:
         return d
 
-def RS(dirname, filename, m):
+def RSstatistic(dirname, filename, n, K):
     """
     Function to plot the R/S statistic in function of m
     The slope is equal to d + 1/2 (fractional index)
@@ -254,8 +254,10 @@ def RS(dirname, filename, m):
         dirname = Repertory where to find the time series file
         type filename = string
         filename = Name of the time series file
-        type m = numpy array of integers
-        m = List of values for the aggregation
+        type n = numpy array of integers
+        n = List of values for the lag
+        type K = integer
+        K = Number of blocks
     Output:
         type d = float
         d = Fractional index
@@ -263,22 +265,22 @@ def RS(dirname, filename, m):
     data = pickle.load(open(dirname + filename + '.pkl', 'rb'))
     X = data[3]
     N = len(X)
-    Y = np.cumsum(X)
+    Nk = int( N / K)
+    assert Nk > np.max(n), 'Too many blocks {} or too high lag {}'.format(K, np.max(n))
     RS = []
     lag = []
-    for i in range(0, len(m)):
-        K = int(N / m[i])
-        for t in range(0, K):
-            index = np.arange(0, m[i])
-            Rmax = np.max(Y[t * m[i] : (t + 1) * m[i]] - Y[t * m[i]] - index * \
-                (Y[(t + 1) * m[i] - 1] - Y[t * m[i]]) / m[i])
-            Rmin = np.min(Y[t * m[i] : (t + 1) * m[i]] - Y[t * m[i]] - index * \
-                (Y[(t + 1) * m[i] - 1] - Y[t * m[i]]) / m[i])
+    for k in range(0, K):
+        Xk = X[k * Nk : (k + 1) * Nk]
+        for i in range(0, len(n)):
+            Y = np.cumsum(Xk)
+            index = np.arange(0, n[i])
+            Rmax = np.max(Y[0 : n[i]] - Y[n[i] - 1] * index / n[i])
+            Rmin = np.min(Y[0 : n[i]] - Y[n[i] - 1] * index / n[i])
             R = Rmax - Rmin
-            S = sqrt(np.var(Y[t * m[i] : (t + 1) * m[i]]))
+            S = sqrt(np.var(Y))
             if (S != 0.0):
                 RS.append(R / S)
-                lag.append(m[i])
+                lag.append(n[i])
     RS = np.asarray(RS)
     lag = np.asarray(lag)
     # Linear regression

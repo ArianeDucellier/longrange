@@ -1,0 +1,8 @@
+data/FARIMA/*.pkl
+data/FARIMA/*.txt
+src/absolutevalue_FARIMA/*
+src/periodogram_FARIMA/*
+src/RS_FARIMA/*
+src/variance_FARIMA/*
+src/variancemoulines_FARIMA/*
+src/varianceresiduals_FARIMA/*
