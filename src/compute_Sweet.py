@@ -34,6 +34,11 @@ m = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33, 42, 54, 70, 90, 115, 148, \
 
 # Number of blocks for R/S method
 K = 5
+n = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33, 42, 54, 70, 90, 115, 148, \
+    190, 244, 314, 403, 518, 665, 854, 1096, 1408, 1808, 2321, 2980, \
+    3827, 4914, 6310, 8103, 10404, 13359, 17154, 22026, 28282, 36315, \
+    46630, 59874, 76879, 98715, 126754, 162755, 208981, 268337, \
+    344552, 442413, 525887], dtype=int)
 
 # Absolute value method
 #newpath = 'absolutevalue' 
@@ -94,9 +99,9 @@ if not os.path.exists(newpath):
 
 d_RS = np.zeros(nf)
 
-for i in range(6, 7): #range(0, nf):
+for i in range(0, nf):
     filename = 'LFE' + str(i + 1)
-    d_RS[i] = RSstatistic(dirname, filename, m, K)
+    d_RS[i] = RSstatistic(dirname, filename, n, K)
 
 df['d_RS'] = d_RS
 

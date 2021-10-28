@@ -16,7 +16,11 @@ data/Sweet_2014/LFEdistribution/*.eps
 data/Sweet_2014/catalogs/*.mat
 src/absolutevalue_FARIMA/*
 src/periodogram_FARIMA/*
+src/RS/*
+src/RS_Chestler/*
 src/RS_FARIMA/*
+src/RS_Frank/*
+src/RS_Sweet/*
 src/variance_FARIMA/*
 src/variancemoulines_FARIMA/*
 src/varianceresiduals_FARIMA/*

@@ -235,7 +235,6 @@ def get_RS(X, n, K, i):
         Rmin = np.min(Y[0 : n[i]] - Y[n[i] - 1] * index / n[i])
         R = Rmax - Rmin
         S = sqrt(np.var(Y))
-        print(k, n[i], R, S)
         if (S != 0.0):
             RS.append(R / S)
             lag.append(n[i])
@@ -273,16 +272,18 @@ def RSstatistic(dirname, filename, n, K):
             lag.append(result[i][1][j])
     RS = np.array(RS)
     lag = np.array(lag)
+    # Remove zeros
+    lag = lag[np.where(RS > 0)[0]]
+    RS = RS[np.where(RS > 0)[0]]
     # Linear regression
     x = np.reshape(np.log10(lag), (len(lag), 1))
     y = np.reshape(np.log10(RS), (len(RS), 1))
-#    regr = linear_model.LinearRegression(fit_intercept=True)
-#    regr.fit(x, y)
-#    d = regr.coef_[0][0] - 0.5
+    regr = linear_model.LinearRegression(fit_intercept=True)
+    regr.fit(x, y)
+    d = regr.coef_[0][0] - 0.5
     pickle.dump([lag, RS, np.sum(X)], open('RS/' + filename + \
         '.pkl', 'wb'))
-#    return d
-    return 0.0
+    return d
 
 def periodogram(dirname, filename, dt):
     """

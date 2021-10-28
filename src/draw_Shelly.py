@@ -23,37 +23,37 @@ LFEtime['ID'] = LFEtime.ID.astype('category')
 families = LFEtime['ID'].cat.categories.tolist()
 
 # Absolute value method
-for i in range(0, len(families)):
-    filename = families[i]   
-    draw_absolutevalue(filename)
+#for i in range(0, len(families)):
+#    filename = families[i]   
+#    draw_absolutevalue(filename)
 
-os.rename('absolutevalue', 'absolutevalue_Shelly')
+#os.rename('absolutevalue', 'absolutevalue_Shelly')
 
 # Variance method
-newpath = 'variance' 
-if not os.path.exists(newpath):
-    os.makedirs(newpath)
+#newpath = 'variance' 
+#if not os.path.exists(newpath):
+#    os.makedirs(newpath)
 
-for i in range(0, len(families)):
-    filename = families[i]    
-    draw_variance(filename)
+#for i in range(0, len(families)):
+#    filename = families[i]    
+#    draw_variance(filename)
 
-os.rename('variance', 'variance_Shelly')
+#os.rename('variance', 'variance_Shelly')
 
 # Variance method (from Moulines's paper)
-newpath = 'variancemoulines' 
-for i in range(0, len(families)):
-    filename = families[i]
-    draw_variance_moulines(filename)
+#newpath = 'variancemoulines' 
+#for i in range(0, len(families)):
+#    filename = families[i]
+#    draw_variance_moulines(filename)
 
-os.rename('variancemoulines', 'variancemoulines_Shelly')
+#os.rename('variancemoulines', 'variancemoulines_Shelly')
 
 # Variance of residuals method
-for i in range(0, len(families)):
-    filename = families[i]
-    draw_varianceresiduals(filename, 'mean')
+#for i in range(0, len(families)):
+#    filename = families[i]
+#    draw_varianceresiduals(filename, 'mean')
 
-os.rename('varianceresiduals', 'varianceresiduals_Shelly')
+#os.rename('varianceresiduals', 'varianceresiduals_Shelly')
 
 # R/S method
 for i in range(0, len(families)):
@@ -63,8 +63,8 @@ for i in range(0, len(families)):
 os.rename('RS', 'RS_Shelly')
 
 # Periodogram method
-for i in range(0, len(families)):
-    filename = families[i]
-    draw_periodogram(filename)
+#for i in range(0, len(families)):
+#    filename = families[i]
+#    draw_periodogram(filename)
 
-os.rename('periodogram', 'periodogram_Shelly')
+#os.rename('periodogram', 'periodogram_Shelly')

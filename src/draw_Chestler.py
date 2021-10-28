@@ -20,41 +20,41 @@ LFEs = data['LFEs']
 nt = len(LFEs)
 
 # Absolute value method
-for i in range(0, nt):
-    LFEs = data['LFEs'][i]
-    filename = LFEs['name'][0][0]
-    draw_absolutevalue(filename)
+#for i in range(0, nt):
+#    LFEs = data['LFEs'][i]
+#    filename = LFEs['name'][0][0]
+#    draw_absolutevalue(filename)
 
-os.rename('absolutevalue', 'absolutevalue_Chestler')
+#os.rename('absolutevalue', 'absolutevalue_Chestler')
 
 # Variance method
-newpath = 'variance' 
-if not os.path.exists(newpath):
-    os.makedirs(newpath)
+#newpath = 'variance' 
+#if not os.path.exists(newpath):
+#    os.makedirs(newpath)
 
-for i in range(0, nt):
-    LFEs = data['LFEs'][i]
-    filename = LFEs['name'][0][0]
-    draw_variance(filename)
+#for i in range(0, nt):
+#    LFEs = data['LFEs'][i]
+#    filename = LFEs['name'][0][0]
+#    draw_variance(filename)
 
-os.rename('variance', 'variance_Chestler')
+#os.rename('variance', 'variance_Chestler')
 
 # Variance method (from Moulines's paper)
-newpath = 'variancemoulines' 
-for i in range(0, nt):
-    LFEs = data['LFEs'][i]
-    filename = LFEs['name'][0][0]
-    draw_variance_moulines(filename)
+#newpath = 'variancemoulines' 
+#for i in range(0, nt):
+#    LFEs = data['LFEs'][i]
+#    filename = LFEs['name'][0][0]
+#    draw_variance_moulines(filename)
 
-os.rename('variancemoulines', 'variancemoulines_Chestler')
+#os.rename('variancemoulines', 'variancemoulines_Chestler')
 
 # Variance of residuals method
-for i in range(0, nt):
-    LFEs = data['LFEs'][i]
-    filename = LFEs['name'][0][0]
-    draw_varianceresiduals(filename, 'mean')
+#for i in range(0, nt):
+#    LFEs = data['LFEs'][i]
+#    filename = LFEs['name'][0][0]
+#    draw_varianceresiduals(filename, 'mean')
 
-os.rename('varianceresiduals', 'varianceresiduals_Chestler')
+#os.rename('varianceresiduals', 'varianceresiduals_Chestler')
 
 # R/S method
 for i in range(0, nt):
@@ -65,9 +65,9 @@ for i in range(0, nt):
 os.rename('RS', 'RS_Chestler')
 
 # Periodogram method
-for i in range(0, nt):
-    LFEs = data['LFEs'][i]
-    filename = LFEs['name'][0][0]
-    draw_periodogram(filename)
+#for i in range(0, nt):
+#    LFEs = data['LFEs'][i]
+#    filename = LFEs['name'][0][0]
+#    draw_periodogram(filename)
 
-os.rename('periodogram', 'periodogram_Chestler')
+#os.rename('periodogram', 'periodogram_Chestler')
