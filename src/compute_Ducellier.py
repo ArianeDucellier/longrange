@@ -47,85 +47,85 @@ n = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33, 42, 54, 70, 90, 115, 148, \
     344552, 442413, 568070, 729416, 841535], dtype=int)
 
 # Absolute value method
-newpath = 'absolutevalue' 
-if not os.path.exists(newpath):
-    os.makedirs(newpath)
+#newpath = 'absolutevalue' 
+#if not os.path.exists(newpath):
+#    os.makedirs(newpath)
 
-H_absval = np.zeros(nf)
+#H_absval = np.zeros(np.shape(templates)[0])
 
-for i in range(0, np.shape(templates)[0]):
-    filename = templates[i][0].astype(str) 
-    H_absval[i] = absolutevalue(dirname, filename, m)
+#for i in range(0, np.shape(templates)[0]):
+#    filename = templates[i][0].astype(str) 
+#    H_absval[i] = absolutevalue(dirname, filename, m)
 
-df['H_absval'] = H_absval
+#df['H_absval'] = H_absval
 
 # Variance method
-newpath = 'variance' 
-if not os.path.exists(newpath):
-    os.makedirs(newpath)
+#newpath = 'variance' 
+#if not os.path.exists(newpath):
+#    os.makedirs(newpath)
 
-d_var = np.zeros(nf)
+#d_var = np.zeros(np.shape(templates)[0])
 
-for i in range(0, np.shape(templates)[0]):
-    filename = templates[i][0].astype(str)
-    d_var[i] = variance(dirname, filename, m)
+#for i in range(0, np.shape(templates)[0]):
+#    filename = templates[i][0].astype(str)
+#    d_var[i] = variance(dirname, filename, m)
 
-df['d_var'] = d_var
+#df['d_var'] = d_var
 
 # Variance method (from Moulines's paper)
-newpath = 'variancemoulines' 
-if not os.path.exists(newpath):
-    os.makedirs(newpath)
+#newpath = 'variancemoulines' 
+#if not os.path.exists(newpath):
+#    os.makedirs(newpath)
 
-H_varm = np.zeros(nf)
+#H_varm = np.zeros(np.shape(templates)[0])
 
-for i in range(0, np.shape(templates)[0]):
-    filename = templates[i][0].astype(str)
-    H_varm[i] = variance_moulines(dirname, filename, m)
+#for i in range(0, np.shape(templates)[0]):
+#    filename = templates[i][0].astype(str)
+#    H_varm[i] = variance_moulines(dirname, filename, m)
 
-df['H_varm'] = H_varm
+#df['H_varm'] = H_varm
 
 # Variance of residuals method
 newpath = 'varianceresiduals' 
 if not os.path.exists(newpath):
     os.makedirs(newpath)
 
-d_varres = np.zeros(nf)
+d_varres = np.zeros(np.shape(templates)[0])
 
-for i in range(0, np.shape(templates)[0]):
+for i in range(60, np.shape(templates)[0]):
     filename = templates[i][0].astype(str)
     d_varres[i] = varianceresiduals(dirname, filename, m, 'mean')
 
 df['d_varres'] = d_varres
 
 # R/S method
-newpath = 'RS' 
-if not os.path.exists(newpath):
-    os.makedirs(newpath)
+#newpath = 'RS' 
+#if not os.path.exists(newpath):
+#    os.makedirs(newpath)
 
-d_RS = np.zeros(nf)
+#d_RS = np.zeros(np.shape(templates)[0])
 
-for i in range(0, np.shape(templates)[0]):
-    filename = templates[i][0].astype(str)
-    d_RS[i] = RSstatistic(dirname, filename, n, K)
+#for i in range(0, np.shape(templates)[0]):
+#    filename = templates[i][0].astype(str)
+#    d_RS[i] = RSstatistic(dirname, filename, n, K)
 
-df['d_RS'] = d_RS
+#df['d_RS'] = d_RS
 
 # Periodogram method
-newpath = 'periodogram'
-if not os.path.exists(newpath):
-    os.makedirs(newpath)
+#newpath = 'periodogram'
+#if not os.path.exists(newpath):
+#    os.makedirs(newpath)
 
-dt = 60.0
+#dt = 60.0
 
-d_p = np.zeros(nf)
+#d_p = np.zeros(np.shape(templates)[0])
 
-for i in range(0, np.shape(templates)[0]):
-    filename = templates[i][0].astype(str)
-    d_p[i] = periodogram(dirname, filename, dt)
+#for i in range(0, np.shape(templates)[0]):
+#    filename = templates[i][0].astype(str)
+#    d_p[i] = periodogram(dirname, filename, dt)
 
-df['d_p'] = d_p
+#df['d_p'] = d_p
 
 # Save dataframe into file
-filename = 'Ducellier_2022.pkl'
+filename = 'Ducellier_2022_varianceresiduals.pkl'
 pickle.dump([df], open(filename, 'wb'))

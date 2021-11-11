@@ -22,30 +22,30 @@ templates = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
     skiprows=1)
 
 # Absolute value method
-for i in range(0, np.shape(templates)[0]):
-    filename = templates[i][0].astype(str)
-    draw_absolutevalue(filename)
+#for i in range(0, np.shape(templates)[0]):
+#    filename = templates[i][0].astype(str)
+#    draw_absolutevalue(filename)
 
-os.rename('absolutevalue', 'absolutevalue_Ducellier')
+#os.rename('absolutevalue', 'absolutevalue_Ducellier')
 
 # Variance method
-newpath = 'variance' 
-if not os.path.exists(newpath):
-    os.makedirs(newpath)
+#newpath = 'variance' 
+#if not os.path.exists(newpath):
+#    os.makedirs(newpath)
 
-for i in range(0, np.shape(templates)[0]):
-    filename = templates[i][0].astype(str)
-    draw_variance(filename)
+#for i in range(0, np.shape(templates)[0]):
+#    filename = templates[i][0].astype(str)
+#    draw_variance(filename)
 
-os.rename('variance', 'variance_Ducellier')
+#os.rename('variance', 'variance_Ducellier')
 
 # Variance method (from Moulines's paper)
-newpath = 'variancemoulines' 
-for i in range(0, np.shape(templates)[0]):
-    filename = templates[i][0].astype(str)
-    draw_variance_moulines(filename)
+#newpath = 'variancemoulines' 
+#for i in range(0, np.shape(templates)[0]):
+#    filename = templates[i][0].astype(str)
+#    draw_variance_moulines(filename)
 
-os.rename('variancemoulines', 'variancemoulines_Ducellier')
+#os.rename('variancemoulines', 'variancemoulines_Ducellier')
 
 # Variance of residuals method
 for i in range(0, np.shape(templates)[0]):
@@ -55,15 +55,15 @@ for i in range(0, np.shape(templates)[0]):
 os.rename('varianceresiduals', 'varianceresiduals_Ducellier')
 
 # R/S method
-for i in range(0, np.shape(templates)[0]):
-    filename = templates[i][0].astype(str)
-    draw_RSstatistic(filename)
+#for i in range(0, np.shape(templates)[0]):
+#    filename = templates[i][0].astype(str)
+#    draw_RSstatistic(filename)
 
-os.rename('RS', 'RS_Ducellier')
+#os.rename('RS', 'RS_Ducellier')
 
 # Periodogram method
-for i in range(0, np.shape(templates)[0]):
-    filename = templates[i][0].astype(str)
-    draw_periodogram(filename)
+#for i in range(0, np.shape(templates)[0]):
+#    filename = templates[i][0].astype(str)
+#    draw_periodogram(filename)
 
-os.rename('periodogram', 'periodogram_Ducellier')
+#os.rename('periodogram', 'periodogram_Ducellier')

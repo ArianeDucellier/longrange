@@ -61,7 +61,7 @@ if __name__ == '__main__':
 
     # Beginning and end of the period we are looking at
     tbegin = datetime(2009, 6, 1, 0, 0, 0)
-    tend = datetime(2011, 9, 1, 0, 0, 0)
+    tend = datetime(2011, 10, 1, 0, 0, 0)
 
     # We construct the time series by counting the number of LFEs
     # per one-minute-long time window
