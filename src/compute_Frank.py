@@ -79,17 +79,17 @@ n = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33, 42, 54, 70, 90, 115, 148, \
 #df['H_varm'] = H_varm
 
 # Variance of residuals method
-#newpath = 'varianceresiduals' 
-#if not os.path.exists(newpath):
-#    os.makedirs(newpath)
+newpath = 'varianceresiduals' 
+if not os.path.exists(newpath):
+    os.makedirs(newpath)
 
-#d_varres = np.zeros(len(families))
+d_varres = np.zeros(len(families))
 
-#for i in range(0, len(families)):
-#    filename = str(families[i])
-#    d_varres[i] = varianceresiduals(dirname, filename, m, 'mean')
+for i in range(0, len(families)):
+    filename = str(families[i])
+    d_varres[i] = varianceresiduals(dirname, filename, m, 'mean')
 
-#df['d_varres'] = d_varres
+df['d_varres'] = d_varres
 
 # R/S method
 #newpath = 'RS' 
@@ -105,20 +105,20 @@ n = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33, 42, 54, 70, 90, 115, 148, \
 #df['d_RS'] = d_RS
 
 # Periodogram method
-newpath = 'periodogram'
-if not os.path.exists(newpath):
-    os.makedirs(newpath)
+#newpath = 'periodogram'
+#if not os.path.exists(newpath):
+#    os.makedirs(newpath)
 
-dt = 60.0
+#dt = 60.0
 
-d_p = np.zeros(len(families))
+#d_p = np.zeros(len(families))
 
-for i in range(0, len(families)):
-    filename = str(families[i])
-    d_p[i] = periodogram(dirname, filename, dt)
+#for i in range(0, len(families)):
+#    filename = str(families[i])
+#    d_p[i] = periodogram(dirname, filename, dt)
 
-df['d_p'] = d_p
+#df['d_p'] = d_p
 
 # Save dataframe into file
-filename = 'Frank_2014_periodogram.pkl'
+filename = 'Frank_2014_varianceresiduals.pkl'
 pickle.dump([df], open(filename, 'wb'))

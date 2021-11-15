@@ -80,30 +80,30 @@ n = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33, 42, 54, 70, 90, 115, 148, \
 #df['H_varm'] = H_varm
 
 # Variance of residuals method
-newpath = 'varianceresiduals' 
-if not os.path.exists(newpath):
-    os.makedirs(newpath)
-
-d_varres = np.zeros(nf)
-
-for i in range(0, nf):
-    filename = 'LFE' + str(i + 1)
-    d_varres[i] = varianceresiduals(dirname, filename, m, 'mean')
-
-df['d_varres'] = d_varres
-
-# R/S method
-#newpath = 'RS' 
+#newpath = 'varianceresiduals' 
 #if not os.path.exists(newpath):
 #    os.makedirs(newpath)
 
-#d_RS = np.zeros(nf)
+#d_varres = np.zeros(nf)
 
 #for i in range(0, nf):
 #    filename = 'LFE' + str(i + 1)
-#    d_RS[i] = RSstatistic(dirname, filename, n, K)
+#    d_varres[i] = varianceresiduals(dirname, filename, m, 'mean')
 
-#df['d_RS'] = d_RS
+#df['d_varres'] = d_varres
+
+# R/S method
+newpath = 'RS' 
+if not os.path.exists(newpath):
+    os.makedirs(newpath)
+
+d_RS = np.zeros(nf)
+
+for i in range(0, nf):
+    filename = 'LFE' + str(i + 1)
+    d_RS[i] = RSstatistic(dirname, filename, n, K)
+
+df['d_RS'] = d_RS
 
 # Periodogram method
 #newpath = 'periodogram'
@@ -121,5 +121,5 @@ df['d_varres'] = d_varres
 #df['d_p'] = d_p
 
 # Save dataframe into file
-filename = 'Sweet_2014_varianceresiduals.pkl'
+filename = 'Sweet_2014_RS.pkl'
 pickle.dump([df], open(filename, 'wb'))

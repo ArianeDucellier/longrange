@@ -48,18 +48,18 @@ templates = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
 #os.rename('variancemoulines', 'variancemoulines_Ducellier')
 
 # Variance of residuals method
-for i in range(0, np.shape(templates)[0]):
-    filename = templates[i][0].astype(str)
-    draw_varianceresiduals(filename, 'mean')
-
-os.rename('varianceresiduals', 'varianceresiduals_Ducellier')
-
-# R/S method
 #for i in range(0, np.shape(templates)[0]):
 #    filename = templates[i][0].astype(str)
-#    draw_RSstatistic(filename)
+#    draw_varianceresiduals(filename, 'mean')
 
-#os.rename('RS', 'RS_Ducellier')
+#os.rename('varianceresiduals', 'varianceresiduals_Ducellier')
+
+# R/S method
+for i in range(0, np.shape(templates)[0]):
+    filename = templates[i][0].astype(str)
+    draw_RSstatistic(filename)
+
+os.rename('RS', 'RS_Ducellier')
 
 # Periodogram method
 #for i in range(0, np.shape(templates)[0]):

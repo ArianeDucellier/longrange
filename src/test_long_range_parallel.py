@@ -234,7 +234,7 @@ def get_RS(X, n, K, i):
         Rmax = np.max(Y[0 : n[i]] - Y[n[i] - 1] * index / n[i])
         Rmin = np.min(Y[0 : n[i]] - Y[n[i] - 1] * index / n[i])
         R = Rmax - Rmin
-        S = sqrt(np.var(Y))
+        S = sqrt(np.var(Xk[0 : n[i]]))
         if (S != 0.0):
             RS.append(R / S)
             lag.append(n[i])

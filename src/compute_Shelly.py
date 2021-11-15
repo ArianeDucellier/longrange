@@ -96,33 +96,33 @@ n = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33, 42, 54, 70, 90, 115, 148, \
 #df['d_varres'] = d_varres
 
 # R/S method
-#newpath = 'RS' 
-#if not os.path.exists(newpath):
-#    os.makedirs(newpath)
-
-#d_RS = np.zeros(len(families))
-
-#for i in range(0, len(families)):
-#    filename = families[i]
-#    d_RS[i] = RSstatistic(dirname, filename, n, K)
-
-#df['d_RS'] = d_RS
-
-# Periodogram method
-newpath = 'periodogram'
+newpath = 'RS' 
 if not os.path.exists(newpath):
     os.makedirs(newpath)
 
-dt = 60.0
-
-d_p = np.zeros(len(families))
+d_RS = np.zeros(len(families))
 
 for i in range(0, len(families)):
     filename = families[i]
-    d_p[i] = periodogram(dirname, filename, dt)
+    d_RS[i] = RSstatistic(dirname, filename, n, K)
 
-df['d_p'] = d_p
+df['d_RS'] = d_RS
+
+# Periodogram method
+#newpath = 'periodogram'
+#if not os.path.exists(newpath):
+#    os.makedirs(newpath)
+
+#dt = 60.0
+
+#d_p = np.zeros(len(families))
+
+#for i in range(0, len(families)):
+#    filename = families[i]
+#    d_p[i] = periodogram(dirname, filename, dt)
+
+#df['d_p'] = d_p
 
 # Save dataframe into file
-filename = 'Shelly_2017_periodogram.pkl'
+filename = 'Shelly_2017_RS.pkl'
 pickle.dump([df], open(filename, 'wb'))

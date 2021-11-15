@@ -1,3 +1,4 @@
+data/FARIMA/*.eps
 data/FARIMA/*.pkl
 data/FARIMA/*.txt
 data/Chestler_2017/timeseries/*.pkl
@@ -24,8 +25,8 @@ src/periodogram_Chestler/*
 src/periodogram_Ducellier/*
 src/periodogram_FARIMA/*
 src/periodogram_Frank/*
-src_periodogram_Shelly/*
-src_periodogram_Sweet/*
+src/periodogram_Shelly/*
+src/periodogram_Sweet/*
 src/RS_Chestler/*
 src/RS_Ducellier/*
 src/RS_FARIMA/*
