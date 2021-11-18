@@ -16,37 +16,32 @@ from draw_long_range import draw_periodogram
 nf = 9
 
 # Absolute value method
-#for i in range(0, nf):
-#    filename = 'LFE' + str(i + 1)
-#    draw_absolutevalue(filename)
+for i in range(0, nf):
+    filename = 'LFE' + str(i + 1)
+    draw_absolutevalue(filename)
 
-#os.rename('absolutevalue', 'absolutevalue_Sweet')
+os.rename('absolutevalue', 'absolutevalue_Sweet')
 
 # Variance method
-#newpath = 'variance' 
-#if not os.path.exists(newpath):
-#    os.makedirs(newpath)
+for i in range(0, nf):
+    filename = 'LFE' + str(i + 1)
+    draw_variance(filename)
 
-#for i in range(0, nf):
-#    filename = 'LFE' + str(i + 1)
-#    draw_variance(filename)
-
-#os.rename('variance', 'variance_Sweet')
+os.rename('variance', 'variance_Sweet')
 
 # Variance method (from Moulines's paper)
-#newpath = 'variancemoulines' 
-#for i in range(0, nf):
-#    filename = 'LFE' + str(i + 1)
-#    draw_variance_moulines(filename)
+for i in range(0, nf):
+    filename = 'LFE' + str(i + 1)
+    draw_variance_moulines(filename)
 
-#os.rename('variancemoulines', 'variancemoulines_Sweet')
+os.rename('variancemoulines', 'variancemoulines_Sweet')
 
 # Variance of residuals method
-#for i in range(0, nf):
-#    filename = 'LFE' + str(i + 1)
-#    draw_varianceresiduals(filename, 'mean')
+for i in range(0, nf):
+    filename = 'LFE' + str(i + 1)
+    draw_varianceresiduals(filename, 'mean')
 
-#os.rename('varianceresiduals', 'varianceresiduals_Sweet')
+os.rename('varianceresiduals', 'varianceresiduals_Sweet')
 
 # R/S method
 for i in range(0, nf):
@@ -56,8 +51,8 @@ for i in range(0, nf):
 os.rename('RS', 'RS_Sweet')
 
 # Periodogram method
-#for i in range(0, nf):
-#    filename = 'LFE' + str(i + 1)
-#    draw_periodogram(filename)
+for i in range(0, nf):
+    filename = 'LFE' + str(i + 1)
+    draw_periodogram(filename)
 
-#os.rename('periodogram', 'periodogram_Sweet')
+os.rename('periodogram', 'periodogram_Sweet')

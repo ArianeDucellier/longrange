@@ -29,10 +29,6 @@ templates = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
 #os.rename('absolutevalue', 'absolutevalue_Ducellier')
 
 # Variance method
-#newpath = 'variance' 
-#if not os.path.exists(newpath):
-#    os.makedirs(newpath)
-
 #for i in range(0, np.shape(templates)[0]):
 #    filename = templates[i][0].astype(str)
 #    draw_variance(filename)
@@ -40,7 +36,6 @@ templates = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
 #os.rename('variance', 'variance_Ducellier')
 
 # Variance method (from Moulines's paper)
-#newpath = 'variancemoulines' 
 #for i in range(0, np.shape(templates)[0]):
 #    filename = templates[i][0].astype(str)
 #    draw_variance_moulines(filename)
@@ -48,11 +43,12 @@ templates = np.loadtxt('../data/Plourde_2015/templates_list.txt', \
 #os.rename('variancemoulines', 'variancemoulines_Ducellier')
 
 # Variance of residuals method
-#for i in range(0, np.shape(templates)[0]):
-#    filename = templates[i][0].astype(str)
-#    draw_varianceresiduals(filename, 'mean')
+for i in range(0, np.shape(templates)[0]):
+    filename = templates[i][0].astype(str)
+    if i != 59:
+        draw_varianceresiduals(filename, 'mean')
 
-#os.rename('varianceresiduals', 'varianceresiduals_Ducellier')
+os.rename('varianceresiduals', 'varianceresiduals_Ducellier')
 
 # R/S method
 for i in range(0, np.shape(templates)[0]):
@@ -62,8 +58,8 @@ for i in range(0, np.shape(templates)[0]):
 os.rename('RS', 'RS_Ducellier')
 
 # Periodogram method
-#for i in range(0, np.shape(templates)[0]):
-#    filename = templates[i][0].astype(str)
-#    draw_periodogram(filename)
+for i in range(0, np.shape(templates)[0]):
+    filename = templates[i][0].astype(str)
+    draw_periodogram(filename)
 
-#os.rename('periodogram', 'periodogram_Ducellier')
+os.rename('periodogram', 'periodogram_Ducellier')
