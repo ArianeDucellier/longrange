@@ -168,6 +168,7 @@ def draw_varianceresiduals(filename, method):
 #            d, R2), fontsize=24)
     plt.savefig('varianceresiduals/' + filename + '.eps', format='eps')
     plt.close(1)
+    return(d)
 
 def draw_RSstatistic(filename):
     """

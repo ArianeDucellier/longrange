@@ -2,6 +2,7 @@
 This script draws the results of the tests with the module draw_long_range
 for the synthetic FARIMA time series
 """
+import matplotlib.pylab as pylab
 import matplotlib.pyplot as plt
 import numpy as np
 import os
@@ -33,17 +34,22 @@ def draw_absolutevalue(filename, true_d, true_alpha):
     y_pred = regr.predict(x)
     R2 = r2_score(y, y_pred)
     H = regr.coef_[0][0] + 1
+    params = {'legend.fontsize': 24, \
+              'xtick.labelsize':24, \
+              'ytick.labelsize':24}
+    pylab.rcParams.update(params)
     plt.figure(1, figsize=(10, 10))
     plt.plot(np.log10(m), np.log10(AM), 'ko')
     plt.plot(x, y_pred, 'r-')
-    plt.xlabel('Log (aggregation size)', fontsize=24)
-    plt.ylabel('Log (absolute moment)', fontsize=24)
+    plt.xlabel('Log (Length of aggregation window)', fontsize=24)
+    plt.ylabel('Log (First absolute moment)', fontsize=24)
     if true_alpha == 0.0:
         true_H = true_d + 0.5
     else:
         true_H = true_d + 1 / true_alpha
     plt.title('H = {:4.2f} (true value = {:4.2f}) - R2 = {:4.2f}'.format( \
         H, true_H, R2), fontsize=24)
+    plt.tight_layout()
     plt.savefig('absolutevalue/' + filename + '.eps', format='eps')
     plt.close(1)
 
@@ -70,13 +76,18 @@ def draw_variance(filename, true_d, true_alpha):
     y_pred = regr.predict(x)
     R2 = r2_score(y, y_pred)
     d = 0.5 * (regr.coef_[0][0] + 1)
+    params = {'legend.fontsize': 24, \
+              'xtick.labelsize':24, \
+              'ytick.labelsize':24}
+    pylab.rcParams.update(params)
     plt.figure(1, figsize=(10, 10))
     plt.plot(np.log10(m), np.log10(V), 'ko')
     plt.plot(x, y_pred, 'r-')
-    plt.xlabel('Log (aggregation size)', fontsize=24)
-    plt.ylabel('Log (sample variance)', fontsize=24)
+    plt.xlabel('Log (Length of aggregation window)', fontsize=24)
+    plt.ylabel('Log (Sample variance)', fontsize=24)
     plt.title('d = {:4.2f} (true value = {:4.2f}) - R2 = {:4.2f}'.format( \
         d, true_d, R2), fontsize=24)
+    plt.tight_layout()
     plt.savefig('variance/' + filename + '.eps', format='eps')
     plt.close(1)
 
@@ -103,17 +114,22 @@ def draw_variance_moulines(filename, true_d, true_alpha):
     y_pred = regr.predict(x)
     R2 = r2_score(y, y_pred)
     H = 0.5 * (regr.coef_[0][0] + 1.0)
+    params = {'legend.fontsize': 24, \
+              'xtick.labelsize':24, \
+              'ytick.labelsize':24}
+    pylab.rcParams.update(params)
     plt.figure(1, figsize=(10, 10))
     plt.plot(np.log10(m), np.log10(Vm / m), 'ko')
     plt.plot(x, y_pred, 'r-')
-    plt.xlabel('Log (aggregation size)', fontsize=24)
-    plt.ylabel('Log (variance / aggregation size)', fontsize=24)
+    plt.xlabel('Log (Length of aggregation window)', fontsize=24)
+    plt.ylabel('Log (Sample variance / Length of aggregation window)', fontsize=24)
     if true_alpha == 0.0:
         true_H = true_d + 0.5
     else:
         true_H = true_d + 1 / true_alpha
     plt.title('H = {:4.2f} (true value = {:4.2f}) - R2 = {:4.2f}'.format( \
         H, true_H, R2), fontsize=24)
+    plt.tight_layout()
     plt.savefig('variancemoulines/' + filename + '.eps', format='eps')
     plt.close(1)
 
@@ -148,18 +164,23 @@ def draw_varianceresiduals(filename, method, true_d, true_alpha):
         d = 0.5 * (regr.coef_[0][0] - 1)
     else:
         raise ValueError('Method must be median or mean')
+    params = {'legend.fontsize': 24, \
+              'xtick.labelsize':24, \
+              'ytick.labelsize':24}
+    pylab.rcParams.update(params)
     plt.figure(1, figsize=(10, 10))
     plt.plot(np.log10(m), np.log10(Vm), 'ko')
     plt.plot(x, y_pred, 'r-')
-    plt.xlabel('Log (block size)', fontsize=24)
+    plt.xlabel('Log (Block size)', fontsize=24)
     if (method == 'median'):
-        plt.ylabel('Log (median variance residuals)', fontsize=24)
+        plt.ylabel('Log (Median variance of residuals)', fontsize=24)
         plt.title('H = {:4.2f} (true value = {:4.2f}) - R2 = {:4.2f}'.format( \
             H, true_d + 0.5, R2), fontsize=24)
     else:
-        plt.ylabel('Log (mean variance residuals)', fontsize=24)
+        plt.ylabel('Log (Mean variance of residuals)', fontsize=24)
         plt.title('d = {:4.2f} (true value = {:4.2f}) - R2 = {:4.2f}'.format( \
             d, true_d, R2), fontsize=24)
+    plt.tight_layout()
     plt.savefig('varianceresiduals/' + filename + '.eps', format='eps')
     plt.close(1)
 
@@ -185,13 +206,18 @@ def draw_RSstatistic(filename, true_d, true_alpha):
     y_pred = regr.predict(x)
     R2 = r2_score(y, y_pred)
     d = regr.coef_[0][0] - 0.5
+    params = {'legend.fontsize': 24, \
+              'xtick.labelsize':24, \
+              'ytick.labelsize':24}
+    pylab.rcParams.update(params)
     plt.figure(1, figsize=(10, 10))
     plt.plot(np.log10(lag), np.log10(RS), 'ko')
     plt.plot(x, y_pred, 'r-')
-    plt.xlabel('Log (aggregation size)', fontsize=24)
+    plt.xlabel('Log (Lag)', fontsize=24)
     plt.ylabel('Log (R/S statistic)', fontsize=24)
     plt.title('d = {:4.2f} (true value = {:4.2f}) - R2 = {:4.2f}'.format( \
         d, true_d, R2), fontsize=24)
+    plt.tight_layout()
     plt.savefig('RS/' + filename + '.eps', format='eps')
     plt.close(1)
 
@@ -218,13 +244,18 @@ def draw_periodogram(filename, true_d, true_alpha):
     y_pred = regr.predict(x)
     R2 = r2_score(y, y_pred)
     d = - 0.5 * regr.coef_[0][0]
+    params = {'legend.fontsize': 24, \
+              'xtick.labelsize':24, \
+              'ytick.labelsize':24}
+    pylab.rcParams.update(params)
     plt.figure(1, figsize=(10, 10))
     plt.plot(np.log10(nu), np.log10(I), 'ko')
     plt.plot(x, y_pred, 'r-')
-    plt.xlabel('Log (frequency)', fontsize=24)
-    plt.ylabel('Log (spectral density)', fontsize=24)
+    plt.xlabel('Log (Frequency)', fontsize=24)
+    plt.ylabel('Log (Spectral density)', fontsize=24)
     plt.title('d = {:4.2f} (true value = {:4.2f}) - R2 = {:4.2f}'.format( \
         d, true_d, R2), fontsize=24)
+    plt.tight_layout()
     plt.savefig('periodogram/' + filename + '.eps', format='eps')
     plt.close(1)
 
@@ -268,28 +299,28 @@ true_alpha = [0.0, 0.0, 0.0, 0.0, 0.0, \
               1.5, 1.5, 1.5, 1.5]
 
 # Absolute value method
-for i in range(0, len(files)):
-    draw_absolutevalue(files[i], true_d[i], true_alpha[i])
+#for i in range(0, len(files)):
+#    draw_absolutevalue(files[i], true_d[i], true_alpha[i])
 
-os.rename('absolutevalue', 'absolutevalue_FARIMA')
+#os.rename('absolutevalue', 'absolutevalue_FARIMA')
 
 # Variance method
-for i in range(0, len(files)):
-    draw_variance(files[i], true_d[i], true_alpha[i])
+#for i in range(0, len(files)):
+#    draw_variance(files[i], true_d[i], true_alpha[i])
 
-os.rename('variance', 'variance_FARIMA')
+#os.rename('variance', 'variance_FARIMA')
 
 # Variance method (from Moulines's paper)
-for i in range(0, len(files)):
-    draw_variance_moulines(files[i], true_d[i], true_alpha[i])
+#for i in range(0, len(files)):
+#    draw_variance_moulines(files[i], true_d[i], true_alpha[i])
 
-os.rename('variancemoulines', 'variancemoulines_FARIMA')
+#os.rename('variancemoulines', 'variancemoulines_FARIMA')
 
 # Variance of residuals method
-for i in range(0, len(files)):
-    draw_varianceresiduals(files[i], 'mean', true_d[i], true_alpha[i])
+#for i in range(0, len(files)):
+#    draw_varianceresiduals(files[i], 'mean', true_d[i], true_alpha[i])
 
-os.rename('varianceresiduals', 'varianceresiduals_FARIMA')
+#os.rename('varianceresiduals', 'varianceresiduals_FARIMA')
 
 # R/S method
 for i in range(0, len(files)):
@@ -298,7 +329,7 @@ for i in range(0, len(files)):
 os.rename('RS', 'RS_FARIMA')
 
 # Periodogram method
-for i in range(0, len(files)):
-    draw_periodogram(files[i], true_d[i], true_alpha[i])
+#for i in range(0, len(files)):
+#    draw_periodogram(files[i], true_d[i], true_alpha[i])
 
-os.rename('periodogram', 'periodogram_FARIMA')
+#os.rename('periodogram', 'periodogram_FARIMA')

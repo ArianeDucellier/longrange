@@ -1,6 +1,6 @@
 #!/bin/csh -f
 
-set output = Chestler_dvar.eps
+set output = Chestler_RS.eps
 
 # Small map
 set x1 = -124.25
@@ -13,9 +13,7 @@ set Jop = m-123.25/48/10.0
 # Coastline
 gmt pscoast -R$Rop -J$Jop -Ba0.5f0.25:a0.25f0.125:WESN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -X5 -Y5 -P -K >! $output
 
-gmt psxy sweet.txt -R$Rop -J$Jop -Sc -Crgb -O -K >> $output
-
-gmt psxy chestler.txt -R$Rop -J$Jop -Sc -Crgb -O -K >> $output
+gmt psxy Chestler_RS.txt -R$Rop -J$Jop -Sc -Cd -O -K >> $output
 
 # Large map
 set x1 = -130
@@ -45,6 +43,6 @@ END
 
 gmt pstext names.dat -R$Rop -J$Jop -F+f12p,black -O -K >> $output
 
-gmt psscale -Crgb -D8/-1.5/10/0.3h -O -L -B:"Fractional index": >> $output
+gmt psscale -Cd -D8/-1.5/10/0.3h -O -L -B:"Fractional index": >> $output
 
 rm *.dat
