@@ -20,7 +20,7 @@ dboxes = [-0.3, -0.2, -0.1, 0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.
 true_alpha = np.array([2.0, 2.0, 2.0, 2.0, 2.0, 2.0, \
                        1.5, 1.2, 1.5, 1.2, 1.5, 1.5])
 
-data = pickle.load(open('FARIMA.pkl', 'rb'))
+data = pickle.load(open('FARIMA.pkl', 'rb'))[0]
 
 params = {'legend.fontsize': 24, \
           'xtick.labelsize':24, \

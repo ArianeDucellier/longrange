@@ -29,7 +29,7 @@ true_alpha = np.array([0.0, 0.0, 0.0, 0.0, 0.0, \
                        1.5, 1.5, 1.5, 1.5, \
                        1.5, 1.5, 1.5, 1.5])
 
-data = pickle.load(open('FARIMA.pkl', 'rb'))
+data = pickle.load(open('FARIMA.pkl', 'rb'))[0]
 
 data['H_absval'] = np.where(true_alpha > 0.0, data['H_absval'] - 1.0 / true_alpha, data['H_absval'] - 1.0 / 2.0)
 data['H_varm'] = np.where(true_alpha > 0.0, data['H_varm'] - 1.0 / true_alpha, data['H_varm'] - 1.0 / 2.0)

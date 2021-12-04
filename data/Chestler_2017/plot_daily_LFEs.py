@@ -18,7 +18,7 @@ nt = len(LFEs)
 
 # Beginning and end of the period we are looking at
 tbegin = datetime(2009, 6, 1, 0, 0, 0)
-tend = datetime(2011, 9, 1, 0, 0, 0)
+tend = datetime(2011, 10, 1, 0, 0, 0)
 
 # We construct the time series by counting the number of LFEs
 # per one-day-long time window
@@ -33,7 +33,7 @@ nw = int(duration / window)
 for n in range(0, nt):
     LFEs = data['LFEs'][n]
     filename = LFEs['name'][0][0]   
-    LFEtime = LFEs['peakTimes'][0]
+    LFEtime = LFEs['peakTimesMo'][0]
     dt = tend - tbegin
     duration = dt.days * 86400.0 + dt.seconds + dt.microseconds * 0.000001
     nw = int(duration / window)

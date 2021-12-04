@@ -32,7 +32,7 @@ def get_time_series(n, window, tbegin, tend):
     # Get the time of LFE detections
     data = loadmat('LFEsAll.mat')
     LFEs = data['LFEs'][n]
-    LFEtime = LFEs['peakTimes'][0]
+    LFEtime = LFEs['peakTimesMo'][0]
     dt = tend - tbegin
     duration = dt.days * 86400.0 + dt.seconds + dt.microseconds * 0.000001
     nw = int(duration / window)
@@ -65,7 +65,7 @@ if __name__ == '__main__':
 
     # We construct the time series by counting the number of LFEs
     # per one-minute-long time window
-    window = 60.0
+    window = 86400.0
 
     # Loop on templates
     for n in range(0, nt):

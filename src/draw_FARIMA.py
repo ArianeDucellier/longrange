@@ -299,28 +299,28 @@ true_alpha = [0.0, 0.0, 0.0, 0.0, 0.0, \
               1.5, 1.5, 1.5, 1.5]
 
 # Absolute value method
-#for i in range(0, len(files)):
-#    draw_absolutevalue(files[i], true_d[i], true_alpha[i])
+for i in range(0, len(files)):
+    draw_absolutevalue(files[i], true_d[i], true_alpha[i])
 
-#os.rename('absolutevalue', 'absolutevalue_FARIMA')
+os.rename('absolutevalue', 'absolutevalue_FARIMA')
 
 # Variance method
-#for i in range(0, len(files)):
-#    draw_variance(files[i], true_d[i], true_alpha[i])
+for i in range(0, len(files)):
+    draw_variance(files[i], true_d[i], true_alpha[i])
 
-#os.rename('variance', 'variance_FARIMA')
+os.rename('variance', 'variance_FARIMA')
 
 # Variance method (from Moulines's paper)
-#for i in range(0, len(files)):
-#    draw_variance_moulines(files[i], true_d[i], true_alpha[i])
+for i in range(0, len(files)):
+    draw_variance_moulines(files[i], true_d[i], true_alpha[i])
 
-#os.rename('variancemoulines', 'variancemoulines_FARIMA')
+os.rename('variancemoulines', 'variancemoulines_FARIMA')
 
 # Variance of residuals method
-#for i in range(0, len(files)):
-#    draw_varianceresiduals(files[i], 'mean', true_d[i], true_alpha[i])
+for i in range(0, len(files)):
+    draw_varianceresiduals(files[i], 'mean', true_d[i], true_alpha[i])
 
-#os.rename('varianceresiduals', 'varianceresiduals_FARIMA')
+os.rename('varianceresiduals', 'varianceresiduals_FARIMA')
 
 # R/S method
 for i in range(0, len(files)):
@@ -329,7 +329,7 @@ for i in range(0, len(files)):
 os.rename('RS', 'RS_FARIMA')
 
 # Periodogram method
-#for i in range(0, len(files)):
-#    draw_periodogram(files[i], true_d[i], true_alpha[i])
+for i in range(0, len(files)):
+    draw_periodogram(files[i], true_d[i], true_alpha[i])
 
-#os.rename('periodogram', 'periodogram_FARIMA')
+os.rename('periodogram', 'periodogram_FARIMA')

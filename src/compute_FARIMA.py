@@ -37,8 +37,11 @@ for i in range(0, len(files)):
     pickle.dump([0, 0, 0, ts], open(dirname + files[i] + '.pkl', 'wb'))
 
 # Aggregation sizes
-m = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33, 42, 54, 70, 90, 115, 148, \
-    190, 244, 314], dtype=int)
+# For size 10000
+#m = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33, 42, 54, 70, 90, 115, 148, \
+#    190, 244, 314], dtype=int)
+# For size 852
+m = np.array([4, 5, 7, 9, 12, 15, 20, 25, 33], dtype=int)
 
 # Number of blocks for R/S method
 K = 5

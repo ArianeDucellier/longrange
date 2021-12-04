@@ -7,7 +7,10 @@ library(CircStats)
 
 set.seed(0)
 
-N <- 10000
+# Like Taqqu
+#N <- 10000
+# Same length as Chestler catalog with magnitudes
+N <- 852
 n <- 100
 
 # 1) Gaussian FARIMA(1,d,0)
