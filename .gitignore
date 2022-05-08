@@ -4,6 +4,10 @@ data/FARIMA/*.txt
 data/FARIMA_keep/*.eps
 data/FARIMA_keep/*.pkl
 data/FARIMA_keep/*.txt
+data/FARIMA_multiple/*/*.txt
+data/FARIMA_unique/*.eps
+data/FARIMA_unique/*.pkl
+data/FARIMA_unique/*.txt
 data/Chestler_2017/timeseries/*.pkl
 data/Chestler_2017/timeseries_keep/*.pkl
 data/Chestler_2017/LFEdistribution/*.eps
