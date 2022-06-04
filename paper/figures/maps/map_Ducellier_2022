@@ -1,6 +1,6 @@
 #!/bin/csh -f
 
-set output = Ducellier_periodogram.eps
+set output = Ducellier_varianceresiduals.eps
 
 # Small map
 set x1 = -124
@@ -10,9 +10,9 @@ set y2 = 41.8
 set Rop = $x1/$x2/$y1/$y2
 set Jop = m-123.0/40.6/5.0
 
-gmt pscoast -R$Rop -J$Jop -Ba1f0.5::WESN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -X7 -Y5 -P -K >! $output
+gmt pscoast -R$Rop -J$Jop -Ba1f0.5::WESN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -X7 -Y5 -K >! $output
 
-gmt psxy Ducellier_periodogram.txt -R$Rop -J$Jop -Sc0.2 -Cd -O -K >> $output
+gmt psxy Ducellier_varianceresiduals.txt -R$Rop -J$Jop -Sc0.3 -Cducellier -O -K >> $output
 
 # Large map
 set x1 = -130
@@ -42,6 +42,6 @@ END
 
 gmt pstext names.dat -R$Rop -J$Jop -F+f12p,black -O -K >> $output
 
-gmt psscale -Cd -D7/-1.5/10/0.3h -O -L -B:"Fractional index": >> $output
+gmt psscale -Cducellier -D15/6/10/0.3 -O -L -B:"Fractional differencing parameter": >> $output
 
 rm *.dat

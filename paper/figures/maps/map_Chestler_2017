@@ -1,6 +1,6 @@
 #!/bin/csh -f
 
-set output = Chestler_variancemoulines.eps
+set output = Chestler_varianceresiduals.eps
 
 # Small map
 set x1 = -124.25
@@ -11,9 +11,9 @@ set Rop = $x1/$x2/$y1/$y2
 set Jop = m-123.25/48/10.0
 
 # Coastline
-gmt pscoast -R$Rop -J$Jop -Ba0.5f0.25:a0.25f0.125:WESN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -X5 -Y5 -P -K >! $output
+gmt pscoast -R$Rop -J$Jop -Ba0.5f0.25:a0.25f0.125:WESN -W0.1p -G255/255/224 -S224/255/255 -Df -Na -X5 -Y5 -K >! $output
 
-gmt psxy Chestler_variancemoulines.txt -R$Rop -J$Jop -Sc0.2 -CH -O -K >> $output
+gmt psxy Chestler_varianceresiduals.txt -R$Rop -J$Jop -Sc0.3 -Cchestler -O -K >> $output
 
 # Large map
 set x1 = -130
@@ -43,6 +43,6 @@ END
 
 gmt pstext names.dat -R$Rop -J$Jop -F+f12p,black -O -K >> $output
 
-gmt psscale -CH -D8/-1.5/10/0.3h -O -L -B:"Hurst parameter": >> $output
+gmt psscale -Cchestler -D19/6/10/0.3 -O -L -B:"Fractional differencing parameter": >> $output
 
 rm *.dat
