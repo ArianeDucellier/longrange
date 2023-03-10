@@ -36,6 +36,9 @@ def aggregate(X, m):
     return Xm
 
 def get_absval(X, m, i):
+    """
+    Auxiliary function to be used by absolutevalue
+    """
     Xm = aggregate(X, m[i])
     AM = np.mean(np.abs(Xm - np.mean(X)))
     return AM
@@ -74,6 +77,9 @@ def absolutevalue(dirname, filename, m):
     return H
 
 def get_var(X, m, i):
+    """
+    Auxiliary function to be used by variance
+    """
     Xm = aggregate(X, m[i])
     V = np.var(Xm)
     return V
@@ -112,6 +118,9 @@ def variance(dirname, filename, m):
     return d
 
 def get_varm(X, m, i):
+    """
+    Auxiliary function to be used by variance_moulines
+    """
     N = len(X)
     N2 = int(N / m[i])
     X2 = X[0 : N2 * m[i]]
@@ -154,6 +163,9 @@ def variance_moulines(dirname, filename, m):
     return H
 
 def get_varres(X, m, method, i):
+    """
+    Auxiliary function to be used by varianceresiduals
+    """
     N = int(len(X) / m[i])
     V = np.zeros(N)
     for j in range(0, N):
@@ -222,6 +234,9 @@ def varianceresiduals(dirname, filename, m, method):
         return d
 
 def get_RS(X, n, K, i):
+    """
+    Auxiliary function to be used by RSstatistic
+    """
     N = len(X)
     Nk = int( N / K)
     assert Nk > n[i], 'Too many blocks {} or too high lag {}'.format(K, n[i])
@@ -319,6 +334,9 @@ def periodogram(dirname, filename, dt):
     return d
 
 def get_pGPH(X, k, l, i):
+    """
+    Auxiliary function to b used by periodogram_GPH
+    """
     N = len(X)
     b1 = (2.0 / N) * np.sum(X * np.cos(k * l[i]))
     b2 = (2.0 / N) * np.sum(X * np.sin(k * l[i]))
