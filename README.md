@@ -17,8 +17,7 @@ test_long_range.py contains the functions to compute the Hurst parameter $H$ or 
 
 Please see:
 
-Taqqu, M. and V. Teverovsky (1998). “On estimating the intensity of long-range dependence in finite and infinite variance time series”. In: A Practical Guide to Heavy
-Tails: Statistical Techniques and Application. Ed. by R.J. Adler, R.E. Feldman, and M.S. Taqqu. Boston, MA, USA: Birkhäuser
+Taqqu, M. and V. Teverovsky (1998). “On estimating the intensity of long-range dependence in finite and infinite variance time series”. In: A Practical Guide to Heavy Tails: Statistical Techniques and Application. Ed. by R.J. Adler, R.E. Feldman, and M.S. Taqqu. Boston, MA, USA: Birkhäuser
 
 for more details on the methods.
 
